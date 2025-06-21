@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import EditTodo from "./EditTodo";
+import {TodoContext} from '../context/TodoContext';
 
-const TodoList = ({ todoList, toggleComplete, deleteTodo, clearAll, editTodo, setEditTodo, handleSave}) => {
+const TodoList = () => {
+
+    const { todoList, toggleComplete, deleteTodo, clearAll, editTodo, setEditTodo, handleSave} = useContext(TodoContext);
 
     const [editedText , setEditedText] = useState("");
 

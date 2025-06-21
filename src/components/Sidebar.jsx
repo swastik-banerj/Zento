@@ -1,4 +1,9 @@
-const Sidebar = ({ setActiveTab }) => {
+import { useContext } from "react";
+import {TodoContext} from '../context/TodoContext';
+
+const Sidebar = () => {
+
+    const {setActiveTab} = useContext(TodoContext);
 
     return (
         <aside className="flex flex-col w-64 bg-orange-300 h-[100vh] shadow-md">

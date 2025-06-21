@@ -1,17 +1,9 @@
-import { useState } from "react";
+import {useContext} from "react";
+import {TodoContext} from '../context/TodoContext';
 
-const AddTodo = ({ addTask }) => {
+const AddTodo = () => {
 
-  const [taskText, setTaskText] = useState("");
-
-  function handleAddTask(e) {
-    e.preventDefault();
-    if (taskText.trim() !== "") {
-
-      addTask(taskText);
-      setTaskText("");
-    }
-  }
+  const {addTask, taskText, setTaskText, handleAddTask} = useContext(TodoContext);
 
   return (
     <form className="mx-[20vw] my-10" onSubmit={handleAddTask}>
