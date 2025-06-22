@@ -14,7 +14,8 @@ export const ContextProvider = (props) => {
             case 'ADD_TASK':
                 return [...state , {
                     id: Date.now(),
-                    text: payload,
+                    text: payload.taskText,
+                    time: payload.taskTime,
                     completed : false,
                 }];
             
@@ -48,24 +49,31 @@ export const ContextProvider = (props) => {
 
     const [taskText, setTaskText] = useState("");
 
-    const addTask = (task) => dispatch({type: 'ADD_TASK' , payload: task});
+    const [editedText , setEditedText] = useState("");
+    
+    const [taskTime , setTaskTime] = useState("");
+
+    const addTask = (taskText, taskTime) => dispatch({type: 'ADD_TASK' , payload:{taskText, taskTime}});
     const toggleComplete = (taskId) => dispatch({type: 'TOGGLE_COMPLETE' , payload: taskId});
     const deleteTodo = (taskId) => dispatch({type: 'DELETE_TODO' , payload: taskId});
     const clearAll = () => dispatch({type: 'CLEAR_ALL'});
-    const handleSave = (taskId , newText) => dispatch({type: 'EDIT_TODO' , payload: {id:taskId, newText}});
-
+    const handleSave = (taskId , newText) =>{ 
+        dispatch({type: 'EDIT_TODO' , payload: {id:taskId, newText}});
+        setEditTodo(null);
+    }
     function handleAddTask(e) {
         e.preventDefault();
         if (taskText.trim() !== "") {
 
-            addTask(taskText);
+            addTask(taskText, taskTime);
             setTaskText("");
+            setTaskTime("");
         }
     }
 
 
     return (
-        <TodoContext.Provider value={{ activeTab, setActiveTab, todoList, editTodo, setEditTodo, addTask, toggleComplete, deleteTodo, clearAll, handleSave, taskText, setTaskText, handleAddTask }} >
+        <TodoContext.Provider value={{ activeTab, setActiveTab, todoList, editTodo, setEditTodo, addTask, toggleComplete, deleteTodo, clearAll, handleSave, taskText, setTaskText, handleAddTask , editedText , setEditedText, taskTime , setTaskTime }} >
             {props.children}
         </TodoContext.Provider>
     )
