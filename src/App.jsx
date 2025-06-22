@@ -1,14 +1,22 @@
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import './App.css'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
-import {TodoContext} from './context/TodoContext';
+import { TodoContext } from './context/TodoContext';
 
 function App() {
 
-  const {activeTab} = useContext(TodoContext);
+  const { activeTab, checkTasksForVoiceNotification, todoList } = useContext(TodoContext);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      checkTasksForVoiceNotification();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [todoList])
 
 
   return (
