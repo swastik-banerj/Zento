@@ -8,7 +8,7 @@ import { TodoContext } from './context/TodoContext';
 
 function App() {
 
-  const { activeTab, checkTasksForVoiceNotification, todoList } = useContext(TodoContext);
+  const { activeTab, checkTasksForVoiceNotification, todoList, isSidebarOpen, setIsSidebarOpen, toggleSidebar } = useContext(TodoContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,18 +16,18 @@ function App() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [todoList])
+  }, [todoList]);
 
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col min-h-screen bg-gray-800' >
       <Header></Header>
-      <div className='flex'>
+      <div className='flex md:flex-row flex-1 max-w-6xl mx-auto px-4 py-4'>
         <Sidebar></Sidebar>
-        <div className='flex-1'>
+        <main className='flex-1 p-4'>
           {activeTab === "addTodo" && <AddTodo></AddTodo>}
           {activeTab === "todoList" && <TodoList></TodoList>}
-        </div>
+        </main>
       </div>
     </div>
   )
