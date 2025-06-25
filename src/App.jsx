@@ -24,10 +24,10 @@ function App() {
       <Header></Header>
       <div className='flex md:flex-row flex-1 max-w-6xl mx-auto px-4 py-4'>
         <Sidebar></Sidebar>
-        <main className='flex-1 p-4'>
+        <div className='p-4 md:p8 mx-auto max-w-3xl rounded-2xl mt-6'>
           {activeTab === "addTodo" && <AddTodo></AddTodo>}
           {activeTab === "todoList" && <TodoList></TodoList>}
-        </main>
+        </div>
       </div>
     </div>
   )
