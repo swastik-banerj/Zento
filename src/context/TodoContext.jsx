@@ -33,7 +33,7 @@ export const ContextProvider = (props) => {
 
             case 'EDIT_TODO':
                 return state.map((task) =>
-                    task.id === payload.id ? { ...task, text: payload.newText, notified: false } : task
+                    task.id === payload.id ? { ...task, text: payload.newText, time: payload.newTime, notified: false } : task
                 );
 
             case 'MARK_NOTIFIED':
@@ -56,17 +56,23 @@ export const ContextProvider = (props) => {
     const [taskText, setTaskText] = useState("");
 
     const [editedText, setEditedText] = useState("");
+     const [editedTime, setEditedTime] = useState("");
 
     const [taskTime, setTaskTime] = useState("");
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+
     const addTask = (taskText, taskTime) => dispatch({ type: 'ADD_TASK', payload: { taskText, taskTime } });
     const toggleComplete = (taskId) => dispatch({ type: 'TOGGLE_COMPLETE', payload: taskId });
     const deleteTodo = (taskId) => dispatch({ type: 'DELETE_TODO', payload: taskId });
     const clearAll = () => dispatch({ type: 'CLEAR_ALL' });
-    const handleSave = (taskId, newText) => {
-        dispatch({ type: 'EDIT_TODO', payload: { id: taskId, newText } });
+
+    const handleSave = (taskId, newText, newTime) => {
+        dispatch({ 
+            type: 'EDIT_TODO', 
+            payload: { id: taskId, newText, newTime } 
+        });
         setEditTodo(null);
     }
     const notify = (taskId) => dispatch({ type: 'MARK_NOTIFIED', payload: taskId });
@@ -123,7 +129,7 @@ export const ContextProvider = (props) => {
 
 
     return (
-        <TodoContext.Provider value={{ activeTab, setActiveTab, todoList, editTodo, setEditTodo, addTask, toggleComplete, deleteTodo, clearAll, handleSave, taskText, setTaskText, handleAddTask, editedText, setEditedText, taskTime, setTaskTime, checkTasksForVoiceNotification, isSidebarOpen, setIsSidebarOpen, toggleSidebar }} >
+        <TodoContext.Provider value={{ activeTab, setActiveTab, todoList, editTodo, setEditTodo, addTask, toggleComplete, deleteTodo, clearAll, handleSave, taskText, setTaskText, handleAddTask, editedText, setEditedText, taskTime, setTaskTime, checkTasksForVoiceNotification, isSidebarOpen, setIsSidebarOpen, toggleSidebar, editedTime, setEditedTime }} >
             {props.children}
         </TodoContext.Provider>
     )
