@@ -4,7 +4,7 @@ import { TodoContext } from '../context/TodoContext';
 
 const TodoList = () => {
 
-    const { todoList, toggleComplete, deleteTodo, clearAll, editTodo, setEditTodo, handleSave, editedText, setEditedText, setEditedTime, editedTime } = useContext(TodoContext);
+    const { todoList, toggleComplete, deleteTodo, clearAll, editTodo, setEditTodo, handleSave, editedText, setEditedText, setEditedTime } = useContext(TodoContext);
 
     return (
         <div className="bg-gray-300 w-full h-auto max-w-3xl mx-auto rounded-xl shadow-md my-9 p-6 flex flex-col">

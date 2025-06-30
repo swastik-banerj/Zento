@@ -20,15 +20,8 @@ const Sidebar = () => {
                     >Medicine List</button>
                 </div>
 
-                <div className="flex items-center justify-center h-16 hover:text-blue-400 font-medium">
-                    <button className={`text-gray-800 font-bold  hover:text-blue-400 rounded p-1 transition ${activeTab === 'history' ? "bg-amber-200 font-semibold" : ""} `}
-                        onClick={() => setActiveTab("history")}
-                    >History</button>
-                </div>
             </aside>
         </div>
-
-
     )
 }
 

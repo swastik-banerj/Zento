@@ -1,0 +1,23 @@
+{
+  "name": "Zento - Smart Medicine Reminder",
+  "short_name": "Zento",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1f2937",
+  "theme_color": "#1f2937",
+  "description": "Get medicine reminders with voice and persistent notifications.",
+  "icons": [
+    {
+      "src": "/icons/icon-192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+  
+    {
+      "src": "/icons/icon-192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    }
+  ]
+}
+
